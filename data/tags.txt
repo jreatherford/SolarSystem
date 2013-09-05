@@ -1,0 +1,8 @@
+[title][/]
+[distance][/]  //average distance from the sun
+[year][/]
+[day][/]
+[temp][/]     //average temp or range
+[gravity][/]
+[diameter][/]
+[info][/]

@@ -6,6 +6,15 @@ class Planet
     private $image;
     private $data;
     
+    private $title;
+    private $distance;  //average distance from the sun
+    private $year;
+    private $day;
+    private $temp;     //average temp or range
+    private $gravity;
+    private $diameter;
+    private $info;
+    
     public function __construct($planet_image, $planet_data_file)
     {
         
@@ -21,7 +30,52 @@ class Planet
         else
             echo "ERROR CANNOT FIND DATA FILE: $planet_data_file <br>";
         
-        //here, I shall parse the data file
+        echo "$data<br><br><br>";
+        
+        //snip out all the tags from the data file
+        //$data = preg_replace("#\s#", " ", $data);
+        preg_match_all ("#\[.*\].*\[/\]#",$data,$tags);
+        $tags = $tags[0];
+
+        
+        foreach ($tags as $tag)
+        {
+            $tag_type = substr($tag, 1, strpos($tag,"]")-1);
+            $tag_data = substr($tag, (strlen($tag_type) + 2), (strlen($tag) - strlen($tag_type) - 5));
+            $tag_data = trim($tag_data);
+            
+            switch ($tag_type){
+               
+                case "title":
+                    $title = $tag_data;
+                    break;
+                case "distance":
+                    $distance = $tag_data;
+                    break;
+                case "year":
+                    $year = $tag_data;
+                    break;
+                case "day":
+                    $day = $tag_data;
+                    break;
+                case "temp":
+                    $temp = $tag_data;
+                    break;
+                case "gravity":
+                    $gravity = $tag_data;
+                    break;
+                case "diameter":
+                    $diameter = $tag_data;
+                    break;
+                case "info":
+                    $info = $tag_data;
+                    break;
+                
+            }
+            
+            echo "$tag --> \t$tag_type || \t$tag_data<br>";
+        }
+        
         
     }
     
@@ -32,8 +86,8 @@ class Planet
 
 }
 
-$BELT = new Planet("renders/mars.png","data/belt.dat");
-$EARTH = new Planet("renders/earth.png","data/earth.dat");
+//$BELT = new Planet("renders/mars.png","data/belt.dat");
+$EARTH = new Planet("renders/earth.png","data/earth.dat");/*
 $JUPITER= new Planet("renders/jupiter.png","data/jupiter.dat");
 $MARS = new Planet("renders/mars.png","data/mars.dat");
 $MERCURY = new Planet("renders/mercury.png","data/mercury.dat");
@@ -44,7 +98,7 @@ $SOL = new Planet("renders/sol.png","data/sol.dat");
 $URANUS = new Planet("renders/uranus.png","data/uranus.dat");
 $VENUS = new Planet("renders/venus.png","data/venus.dat");
 $LUNA = new Planet("renders/luna.png","data/luna.dat");
-
+*/
 
 
 

@@ -30,13 +30,11 @@ class Planet
         else
             echo "ERROR CANNOT FIND DATA FILE: $planet_data_file <br>";
         
-        echo "$data<br><br><br>";
-        
         //snip out all the tags from the data file
-        //$data = preg_replace("#\s#", " ", $data);
-        preg_match_all ("#\[.*\].*\[/\]#",$data,$tags);
+        preg_match_all ("#\[.*?\].*?\[/\]#sm",$data,$tags);
         $tags = $tags[0];
 
+        
         
         foreach ($tags as $tag)
         {
@@ -70,13 +68,8 @@ class Planet
                 case "info":
                     $info = $tag_data;
                     break;
-                
             }
-            
-            echo "$tag --> \t$tag_type || \t$tag_data<br>";
-        }
-        
-        
+        } 
     }
     
     public function drawPlanetPage()
@@ -86,8 +79,8 @@ class Planet
 
 }
 
-//$BELT = new Planet("renders/mars.png","data/belt.dat");
-$EARTH = new Planet("renders/earth.png","data/earth.dat");/*
+$BELT = new Planet("renders/mars.png","data/belt.dat");
+$EARTH = new Planet("renders/earth.png","data/earth.dat");
 $JUPITER= new Planet("renders/jupiter.png","data/jupiter.dat");
 $MARS = new Planet("renders/mars.png","data/mars.dat");
 $MERCURY = new Planet("renders/mercury.png","data/mercury.dat");
@@ -98,7 +91,7 @@ $SOL = new Planet("renders/sol.png","data/sol.dat");
 $URANUS = new Planet("renders/uranus.png","data/uranus.dat");
 $VENUS = new Planet("renders/venus.png","data/venus.dat");
 $LUNA = new Planet("renders/luna.png","data/luna.dat");
-*/
+
 
 
 

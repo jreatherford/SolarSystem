@@ -1,0 +1,30 @@
+body
+{
+    font-size:18px; /* Font Size */
+    color:#CFDFDF;
+    background-color:#000000;
+}
+
+footer
+{
+    font-size:10px; /* Font Size */
+    color:#CFDFDF;
+    background-color:#000000;
+}
+
+a:link {
+    color:#FF00CC;
+    text-decoration:none;
+}
+a:visited {
+    color:#FF00CC;
+    text-decoration:none;
+}
+a:hover {
+    color:#FF00CC;
+    text-decoration:none;
+}
+a:active {
+    color:#FF00CC;
+    text-decoration:none;
+}

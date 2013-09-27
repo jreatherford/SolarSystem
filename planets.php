@@ -1,5 +1,4 @@
 <?php
-
 include "planet_data.php";
 include "header.php";
 ?>
@@ -7,22 +6,20 @@ include "header.php";
 <html>
     <head>
         <title>
-            Solar System
+            Solar System - Welcome
         </title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link rel="stylesheet" type="text/css" href="css/theme.css">
+        
     </head>
     
     <body>
         <script src="http://code.jquery.com/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <div align="center">
-            
-            <img src="Renders/system.png">
-            <br>
-
-        </div>
+        
+        Planets Page
+        
         <br><br><br>
         <?php include "footer.php"?>
     </body>

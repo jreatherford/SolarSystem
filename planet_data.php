@@ -45,28 +45,28 @@ class Planet
             switch ($tag_type){
                
                 case "title":
-                    $title = $tag_data;
+                    $this->title = $tag_data;
                     break;
                 case "distance":
-                    $distance = $tag_data;
+                    $this->distance = $tag_data;
                     break;
                 case "year":
-                    $year = $tag_data;
+                    $this->year = $tag_data;
                     break;
                 case "day":
-                    $day = $tag_data;
+                    $this->day = $tag_data;
                     break;
                 case "temp":
-                    $temp = $tag_data;
+                    $this->temp = $tag_data;
                     break;
                 case "gravity":
-                    $gravity = $tag_data;
+                    $this->gravity = $tag_data;
                     break;
                 case "diameter":
                     $diameter = $tag_data;
                     break;
                 case "info":
-                    $info = $tag_data;
+                    $this->info = $tag_data;
                     break;
             }
         } 
@@ -75,29 +75,10 @@ class Planet
     public function drawPlanetPage()
     {
        //Here, I shall draw the plaet data
+        echo $this->title;;
+
     }
 
 }
 
-$BELT = new Planet("renders/mars.png","data/belt.dat");
-$EARTH = new Planet("renders/earth.png","data/earth.dat");
-$JUPITER= new Planet("renders/jupiter.png","data/jupiter.dat");
-$MARS = new Planet("renders/mars.png","data/mars.dat");
-$MERCURY = new Planet("renders/mercury.png","data/mercury.dat");
-$NEPTUNE = new Planet("renders/neptune.png","data/neptune.dat");
-$PLUTO = new Planet("renders/pluto.png","data/pluto.dat");
-$SATURN = new Planet("renders/saturn.png","data/saturn.dat");
-$SOL = new Planet("renders/sol.png","data/sol.dat");
-$URANUS = new Planet("renders/uranus.png","data/uranus.dat");
-$VENUS = new Planet("renders/venus.png","data/venus.dat");
-$LUNA = new Planet("renders/luna.png","data/luna.dat");
-
-
-
-
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 ?>

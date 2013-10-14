@@ -18,6 +18,12 @@
             <?php include "header.php"; ?>
             
             <img src="Renders/system.png">
+            NOTE: THIS WEBSITE IS STILL UNDER CONSTRUCTION.<br>
+            THERE IS STILL A LOT OF WORK TO BE DONE BEFORE IT IS READY.<br>
+            So please don't judge to hard. :)<br>
+            <a href="https://github.com/jreatherford/SolarSystem"><br>
+            For the most recent verion of the code, click here. 
+            </a>
             <br>
 
         </div>

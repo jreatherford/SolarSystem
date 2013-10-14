@@ -20,7 +20,7 @@ class Planet
         
         //set the image file
         if (file_exists($planet_image))
-            $image = $planet_image;
+            $this->image = $planet_image;
         else
             echo "ERROR CANNOT FIND IMAGE FILE: $planet_image <br>";
         
@@ -74,9 +74,46 @@ class Planet
     
     public function drawPlanetPage()
     {
-       //Here, I shall draw the plaet data
-        echo $this->title;;
+       //Here, I shall draw the planet data
+       
+        
+ echo'   
+<!----------------------------------------------------------------------------->
+<!----------------- Planet code here:  Parsed in with PHP --------------------->
+<!----------------------------------------------------------------------------->';
+        
+        //Open the main container
+        echo '<div class="container" align="center">
+              <div class="container-fluid">
+              <div class="row-fluid">';
+                
+        //Open the sidebar
+        echo '<div class="span2">';
+    
+       //print the planet's image
+       echo'<img src="',$this->image,'"></img>';
+            
+       //PUT THE REST OF THE SIDEBAR CONTENT HERE
 
+       //Close the sidebar       
+       echo '</div>';
+          
+       
+        //print the main window content
+        echo'<div class="span10" align = left>
+             <h1>',
+                $this->title,
+             '</h1><br>',
+                $this->info,'
+              <br><br><br>
+</div>';
+        
+        //close the main container
+        echo "</div></div></div>";
+ echo'   
+<!----------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------->';
     }
 
 }

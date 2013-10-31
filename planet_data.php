@@ -3,17 +3,17 @@
 
 class Planet 
 {
-    private $image;
-    private $data;
+    private $image = "";
+    private $data = "";
     
-    private $title;
-    private $distance;  //average distance from the sun
-    private $year;
-    private $day;
-    private $temp;     //average temp or range
-    private $gravity;
-    private $diameter;
-    private $info;
+    private $title = "";
+    private $distance = "";  //average distance from the sun
+    private $year = "";
+    private $day = "";
+    private $temp = "";     //average temp or range
+    private $gravity = "";
+    private $diameter = "";
+    private $info = "";
     
     public function __construct($planet_image, $planet_data_file)
     {
@@ -72,6 +72,15 @@ class Planet
         } 
     }
     
+    private function printTag($tag_name, $tag_data)
+    {
+        if ($tag_data != "")
+        {
+            echo "<b>$tag_name:</b><br>$tag_data<br><br>";
+        }
+        
+    }
+    
     public function drawPlanetPage()
     {
        //Here, I shall draw the planet data
@@ -88,19 +97,24 @@ class Planet
               <div class="row-fluid">';
                 
         //Open the sidebar
-        echo '<div class="span2">';
+        echo '<div class="span3" align="left">';
     
        //print the planet's image
-       echo'<img src="',$this->image,'"></img>';
+       echo'<img src="',$this->image,'"></img><br>';
             
-       //PUT THE REST OF THE SIDEBAR CONTENT HERE
+       $this->printTag("Distance from sun", $this->distance);
+       $this->printTag("Length of Year", $this->year);
+       $this->printTag("Length of Day", $this->day);
+       $this->printTag("Avg. Temp", $this->temp);
+       $this->printTag("Gravity", $this->gravity);
+       $this->printTag("Diameter", $this->diameter);
 
        //Close the sidebar       
        echo '</div>';
           
        
         //print the main window content
-        echo'<div class="span10" align = left>
+        echo'<div class="span9" align = left>
              <h1>',
                 $this->title,
              '</h1><br>',
@@ -115,6 +129,8 @@ class Planet
 <!----------------------------------------------------------------------------->
 <!----------------------------------------------------------------------------->';
     }
+    
+
 
 }
 

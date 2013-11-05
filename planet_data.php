@@ -7,13 +7,8 @@ class Planet
     private $data = "";
     
     private $title = "";
-    private $distance = "";  //average distance from the sun
-    private $year = "";
-    private $day = "";
-    private $temp = "";     //average temp or range
-    private $gravity = "";
-    private $diameter = "";
     private $info = "";
+    private $facts;
     
     public function __construct($planet_image, $planet_data_file)
     {
@@ -41,51 +36,25 @@ class Planet
             $tag_type = substr($tag, 1, strpos($tag,"]")-1);
             $tag_data = substr($tag, (strlen($tag_type) + 2), (strlen($tag) - strlen($tag_type) - 5));
             $tag_data = trim($tag_data);
+
             
             switch ($tag_type){
-               
                 case "title":
                     $this->title = $tag_data;
-                    break;
-                case "distance":
-                    $this->distance = $tag_data;
-                    break;
-                case "year":
-                    $this->year = $tag_data;
-                    break;
-                case "day":
-                    $this->day = $tag_data;
-                    break;
-                case "temp":
-                    $this->temp = $tag_data;
-                    break;
-                case "gravity":
-                    $this->gravity = $tag_data;
-                    break;
-                case "diameter":
-                    $diameter = $tag_data;
                     break;
                 case "info":
                     $this->info = $tag_data;
                     break;
+                default:
+                    $this->facts[$tag_type] = $tag_data;
+                    
             }
         } 
     }
-    
-    private function printTag($tag_name, $tag_data)
-    {
-        if ($tag_data != "")
-        {
-            echo "<b>$tag_name:</b><br>$tag_data<br><br>";
-        }
-        
-    }
-    
+      
     public function drawPlanetPage()
     {
-       //Here, I shall draw the planet data
-       
-        
+  
  echo'   
 <!----------------------------------------------------------------------------->
 <!----------------- Planet code here:  Parsed in with PHP --------------------->
@@ -102,12 +71,11 @@ class Planet
        //print the planet's image
        echo'<img src="',$this->image,'"></img><br>';
             
-       $this->printTag("Distance from sun", $this->distance);
-       $this->printTag("Length of Year", $this->year);
-       $this->printTag("Length of Day", $this->day);
-       $this->printTag("Avg. Temp", $this->temp);
-       $this->printTag("Gravity", $this->gravity);
-       $this->printTag("Diameter", $this->diameter);
+       //print the planet facts
+       foreach ($this->facts as $fact_name => $fact_data)
+       {
+           echo "<b>$fact_name:</b><br>$fact_data<br><br>";
+       }
 
        //Close the sidebar       
        echo '</div>';
@@ -129,9 +97,6 @@ class Planet
 <!----------------------------------------------------------------------------->
 <!----------------------------------------------------------------------------->';
     }
-    
-
-
 }
 
 ?>

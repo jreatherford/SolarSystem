@@ -3,11 +3,7 @@
 [year]4,331 days[/]
 [day]9 hours, 56 minutes[/]
 [temp]-234 F[/]
-[gravity]
-    <script src="data/GravityCalc.js"></script>
-    <script>DrawGravityCalc(2.3, "Jupiter");</script>
-   
-[/]
+[gravity]2.3[/]
 [diameter]88,846 miles[/]
 
 

@@ -3,12 +3,15 @@
 
 class Planet 
 {
-    private $image = "";
     private $data = "";
+    private $image = "";
+    
     
     private $title = "";
     private $info = "";
+    private $gravity = "";
     private $facts;
+    
     
     public function __construct($planet_image, $planet_data_file)
     {
@@ -45,6 +48,9 @@ class Planet
                 case "info":
                     $this->info = $tag_data;
                     break;
+                case "gravity":
+                    $this->gravity = $tag_data;
+                    break;
                 default:
                     $this->facts[$tag_type] = $tag_data;
                     
@@ -77,6 +83,9 @@ class Planet
            echo "<b>$fact_name:</b><br>$fact_data<br><br>";
        }
 
+       if ($this->gravity != "")
+           $this->drawGravityForm();
+       
        //Close the sidebar       
        echo '</div>';
           
@@ -97,6 +106,26 @@ class Planet
 <!----------------------------------------------------------------------------->
 <!----------------------------------------------------------------------------->';
     }
+    
+    private function drawGravityForm()
+    {
+        echo "
+         <script>        
+        function GravityCalc (ratio, name)
+        {
+            Weight = getElementById('WeightBox').value * ratio;
+            alert('beta');
+            document.getElementById('GravityDiv').innerHTML = 'You would weigh ' + weight + ' on ' + name;
+        }</script>
+
+
+                Enter Weight: <input type='text' id='WeightBox' name='Weight'><br>
+                <button value='Submit' onclick='GravityCalc(ratio,name)'/>Cal</button>
+                <div id='WeightText'> </div>
+
+";
+    }
+    
 }
 
 ?>

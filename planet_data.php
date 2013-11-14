@@ -110,18 +110,19 @@ class Planet
     private function drawGravityForm()
     {
         echo "
-         <script>        
-        function GravityCalc (ratio, name)
-        {
-            Weight = getElementById('WeightBox').value * ratio;
-            alert('beta');
-            document.getElementById('GravityDiv').innerHTML = 'You would weigh ' + weight + ' on ' + name;
-        }</script>
+        <script type='text/javascript'>        
+            function GravityCalc (ratio, name)
+            {
+                var Weight;
+                Weight = parseInt(document.getElementById('WeightBox').value) * ratio;
+                document.getElementById('WeightText').innerHTML = 'You would Weigh ' + Weight + ' on ' + name;
+            }
+        </script>
 
 
-                Enter Weight: <input type='text' id='WeightBox' name='Weight'><br>
-                <button value='Submit' onclick='GravityCalc(ratio,name)'/>Cal</button>
-                <div id='WeightText'> </div>
+       Enter Weight: <input type='text' id='WeightBox' name='Weight'><br>
+       <button onclick='javascript:GravityCalc({$this->gravity},\"{$this->title}\")'>Calculate</button>
+       <div id='WeightText'> </div>
 
 ";
     }

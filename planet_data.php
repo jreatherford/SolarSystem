@@ -5,8 +5,7 @@ class Planet
 {
     private $data = "";
     private $image = "";
-    
-    
+        
     private $title = "";
     private $info = "";
     private $gravity = "";
@@ -33,29 +32,32 @@ class Planet
         $tags = $tags[0];
 
         
-        
-        foreach ($tags as $tag)
+        if (!empty($tags))
         {
-            $tag_type = substr($tag, 1, strpos($tag,"]")-1);
-            $tag_data = substr($tag, (strlen($tag_type) + 2), (strlen($tag) - strlen($tag_type) - 5));
-            $tag_data = trim($tag_data);
+            foreach ($tags as $tag)
+            {
+                $tag_type = strtolower(substr($tag, 1, strpos($tag,"]")-1));
+                $tag_type[0] = strtoupper($tag_type[0]);
+                $tag_data = substr($tag, (strlen($tag_type) + 2), (strlen($tag) - strlen($tag_type) - 5));
+                $tag_data = trim($tag_data);
 
-            
-            switch ($tag_type){
-                case "title":
-                    $this->title = $tag_data;
-                    break;
-                case "info":
-                    $this->info = $tag_data;
-                    break;
-                case "gravity":
-                    $this->gravity = $tag_data;
-                    break;
-                default:
-                    $this->facts[$tag_type] = $tag_data;
-                    
+
+                switch ($tag_type){
+                    case "Title":
+                        $this->title = $tag_data;
+                        break;
+                    case "Info":
+                        $this->info = $tag_data;
+                        break;
+                    case "Gravity":
+                        $this->gravity = $tag_data;
+                        break;
+                    default:
+                        $this->facts[$tag_type] = $tag_data;
+
+                }
             }
-        } 
+        }
     }
       
     public function drawPlanetPage()
@@ -78,9 +80,14 @@ class Planet
        echo'<img src="',$this->image,'"></img><br>';
             
        //print the planet facts
-       foreach ($this->facts as $fact_name => $fact_data)
+       if (!empty($this->facts))
        {
-           echo "<b>$fact_name:</b><br>$fact_data<br><br>";
+           echo "<h3>Quick Facts </h3><br>";
+           
+            foreach ($this->facts as $fact_name => $fact_data)
+            {
+                echo "<b>$fact_name:</b><br>$fact_data<br><br>";
+            }
        }
 
        if ($this->gravity != "")
@@ -110,6 +117,7 @@ class Planet
     private function drawGravityForm()
     {
         echo "
+            
         <script type='text/javascript'>        
             function GravityCalc (ratio, name)
             {

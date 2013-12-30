@@ -17,7 +17,8 @@
             
             <?php include "header.php"; ?>
             
-            <img src="Renders/system.png">
+            <img src="renders/system.png">
+            <br>
             NOTE: THIS WEBSITE IS STILL UNDER CONSTRUCTION.<br>
             THERE IS STILL A LOT OF WORK TO BE DONE BEFORE IT IS READY.<br>
             So please don't judge to hard. :)<br>
